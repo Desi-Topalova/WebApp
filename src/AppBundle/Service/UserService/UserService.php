@@ -58,7 +58,7 @@ public function __construct(UserRepository $userRepository,BCryptService $encryp
     {
         return $this->userRepository->find($user);
     }
-
+    //Coment
     /**
      * @return AppBundle\Entity\User |object
      */
