@@ -51,16 +51,16 @@ public function __construct(UserRepository $userRepository,BCryptService $encryp
     }
 
     /**
-     * @param AppBundle\Entity\User $user
+     * @param User $user
      * @return User|null|object
      */
     public function findOne(User $user): ?User
     {
-        return $this->userRepository->find($user);
+        return $this->userRepository->find($this->currentUser());
     }
 
     /**
-     * @return AppBundle\Entity\User |object
+     * @return User |object
      */
     public function currentUser(): ?User
     {

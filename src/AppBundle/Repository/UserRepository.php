@@ -20,7 +20,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     {
 
         /** @var EntityManager $em */
-        parent::__construct($em, $metadata==null?new Mapping\ClassMetadata(User::class):$metadata);
+        parent::__construct($em, $metadata==null?new Mapping\ClassMetadata(User::class):$metadata===null);
     }
     public function insert(User $user){
         try {
