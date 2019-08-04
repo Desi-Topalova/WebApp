@@ -5,7 +5,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -58,13 +60,28 @@ class User implements UserInterface
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="role_id",referencedColumnName="id")})
      */
-// private $roles;
+        private $roles;
+    /**
+     * @var string
+     * @ORM\Column(name="image",type="string",length=255)
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
+     * @Assert\Image(
+     *     allowLandscape = false,
+     *     allowPortrait = false
+     * )
+     */
+    private $image;
 
-    //private $image;
+
     public function __construct()
     {
         $this->problems=new ArrayCollection();
-        //$this->roles=new ArrayCollection();
+        $this->roles=new ArrayCollection();
     }
 
 
@@ -191,5 +208,21 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param File|null $file
+     */
+    public function setImage(File $file=null)
+    {
+        $this->image = $file;
     }
 }

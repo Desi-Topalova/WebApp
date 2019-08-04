@@ -61,8 +61,4 @@ public function __construct(ProblemRepository $problemRepository, UserServiceInt
         return $this->problemRepository->find($id);
     }
 
-    public function sortProblems()
-    {
-        // TODO: Implement sortProblems() method.
-    }
 }

@@ -51,7 +51,7 @@ class ProblemController extends Controller
      * @return Response
      */
     public function edit(int $id){
-        $problem=$this->getDoctrine()->getRepository(Problem::class)->find($id);
+        $problem=$this->problemService->findOneProblemById($id);
         if (null===$problem){
             return $this->redirectToRoute("index");
         }

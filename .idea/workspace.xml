@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0d9da835-afa0-4941-b0fa-e59d48d60401" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProblemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProblemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Problem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Problem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProblemRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ProblemRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/ProblemService/ProblemService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/ProblemService/ProblemService.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +169,7 @@
       <workItem from="1564651999962" duration="4128000" />
       <workItem from="1564656159797" duration="1529000" />
       <workItem from="1564659551550" duration="9443000" />
-      <workItem from="1564845593891" duration="18708000" />
+      <workItem from="1564845593891" duration="28111000" />
     </task>
     <servers />
   </component>
