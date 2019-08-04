@@ -45,9 +45,16 @@ class Problem
      * @var string
      */
     private $summary;
-
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="problems")
+     */
     private $creator;
-
+    /**
+     * @ORM\Column(name="view_count", type="integer")
+     * @var integer
+     */
+    private $viewCount;
 
     /**
      * Get id
@@ -166,6 +173,22 @@ class Problem
     {
         $this->creator = $creator;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getViewCount(): int
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * @param int $viewCount
+     */
+    public function setViewCount(int $viewCount): void
+    {
+        $this->viewCount = $viewCount;
     }
 }
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -43,9 +44,28 @@ class User implements UserInterface
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Problem",mappedBy="creator")
+     * @ORM\JoinColumn(name="creatorId",referencedColumnName="id")
+     */
 
+    private $problems;
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Role",)
+     * @ORM\JoinTable(name="users_roles",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="role_id",referencedColumnName="id")})
+     */
+// private $roles;
 
     //private $image;
+    public function __construct()
+    {
+        $this->problems=new ArrayCollection();
+        //$this->roles=new ArrayCollection();
+    }
 
 
     /**

@@ -6,7 +6,6 @@ namespace AppBundle\Service\ProblemService;
 
 use AppBundle\Entity\Problem;
 use AppBundle\Repository\ProblemRepository;
-use AppBundle\Service\UserService\UserService;
 use AppBundle\Service\UserService\UserServiceInterface;
 
 class ProblemService implements ProblemServiceInterface
@@ -50,7 +49,7 @@ public function __construct(ProblemRepository $problemRepository, UserServiceInt
      */
     public function findAllProblems(): ?Problem
     {
-        return $this->problemRepository->findAll();
+        return $this->problemRepository->findBy([],["dateAdded"=>'DESC']);
     }
 
     /**

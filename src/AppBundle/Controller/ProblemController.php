@@ -12,6 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProblemController extends Controller
 {
+    /**
+     * @var ProblemServiceInterface
+     */
     private $problemService;
     public function __construct(ProblemServiceInterface $problemService)
     {
@@ -96,6 +99,23 @@ class ProblemController extends Controller
         $form=$this->createForm(ProblemType::class,$problem);
         $form->handleRequest($request);
         $this->problemService->deleteProblem($problem);
+
         return $this->redirectToRoute('index');
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     */
+    public function view(int $id){
+        $problem=$this->problemService->findOneProblemById($id);
+        if (null===$problem){
+            return $this->redirectToRoute("index");
+        }
+        $problem ->setViewCount($problem->getViewCount()+1);
+    }
+    public function getAllProblemsByUser(){
+       $problem= $this->problemService->findAllProblems();
+        return $this->render('',array('problems'=>$problem));
     }
 }
