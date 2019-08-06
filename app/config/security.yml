@@ -1,6 +1,6 @@
 security:
     encoders:
-        # Our user class and the algorithm we'll use to encode passwords
+        # Our home class and the algorithm we'll use to encode passwords
         # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
         AppBundle\Entity\User: bcrypt
 
@@ -21,20 +21,20 @@ security:
             # denying access is done in access_control or in your controllers
             anonymous: true
 
-            # This allows the user to login by submitting a username and password
+            # This allows the home to login by submitting a username and password
             # Reference: http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             form_login:
                 # The route name that the login form submits to
                 check_path: login
                 # The name of the route where the login form lives
-                # When the user tries to access a protected page, they are redirected here
+                # When the home tries to access a protected page, they are redirected here
                 login_path: login
                 # Secure the login form against CSRF
                 # Reference: http://symfony.com/doc/current/cookbook/security/csrf_in_login_form.html
                 csrf_token_generator: security.csrf.token_manager
 
             logout:
-                # The route name the user can go to in order to logout
+                # The route name the home can go to in order to logout
                 path: logout
                 # The name of the route to redirect to after logging out
                 target: index

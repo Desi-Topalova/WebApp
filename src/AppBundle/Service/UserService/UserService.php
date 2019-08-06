@@ -4,10 +4,11 @@
 namespace AppBundle\Service\UserService;
 
 
-use AppBundle\AppBundle;
+
 use AppBundle\Entity\User;
 use AppBundle\Repository\UserRepository;
 use AppBundle\Service\EncryptionService\BCryptService;
+use AppBundle\Service\RoleService\RoleServiceInterface;
 use Symfony\Component\Security\Core\Security;
 
 class UserService implements UserServiceInterface
@@ -24,17 +25,22 @@ private $encryptionService;
      * @var Security
      */
 private $security;
+    /**
+     * @var RoleServiceInterface
+     */
+private $userRole;
 
-public function __construct(UserRepository $userRepository,BCryptService $encryptionService,Security $security)
+public function __construct(UserRepository $userRepository,BCryptService $encryptionService,Security $security, RoleServiceInterface $userRole)
 {
     $this->userRepository=$userRepository;
     $this->encryptionService=$encryptionService;
     $this->security=$security;
+    $this->userRole=$userRole;
 }
 
     /**
      * @param string $username
-     * @return User|null|object
+     * @return User|null|object|string
      */
     public function findOneByUsername(string $username): ?User
     {
@@ -67,10 +73,17 @@ public function __construct(UserRepository $userRepository,BCryptService $encryp
         return $this->security->getUser();
     }
 
+    /**
+     * @param User $user
+     * @return bool
+     */
     public function save(User $user): bool
     {
         $passwordHash = $this->encryptionService->hash($user->getPassword());
         $user->setPassword($passwordHash);
+        $userRole=$this->userRole->findOneBy("ROLE_USER");
+        $user->addRole($userRole);
+        $user->setImage(null);
 
         return $this->userRepository->insert($user);
     }

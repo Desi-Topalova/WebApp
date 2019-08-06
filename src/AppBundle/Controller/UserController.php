@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
-use AppBundle\Service\UserService\UserService;
 use AppBundle\Service\UserService\UserServiceInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,7 +27,7 @@ class UserController extends Controller
      * @return Response
      */
    public function login(){
-       return $this->render('user/login.html.twig');
+       return $this->render('home/login.html.twig');
    }
 
     /**
@@ -37,7 +36,7 @@ class UserController extends Controller
      * @return Response
      */
    public function register(Request $request){
-      return $this->render('user/register.html.twig', array('form'=>$this->createForm(UserType::class)->createView()));
+      return $this->render('home/register.html.twig', array('form'=>$this->createForm(UserType::class)->createView()));
    }
 
     /**
@@ -49,6 +48,10 @@ class UserController extends Controller
        $user=new User();
        $form=$this->createForm(UserType::class,$user);
        $form->handleRequest($request);
+       //if (null!==$this->userService->findOneByUsername($form['username'])->getData()->getUsername(){
+          // $this->addFlash('error','Потрбителското име е заето.');
+           //return $this->render('home/register.html.twig', ['user'=>$user,'form'=>$this->createForm(UserType::class)->createView()]);
+      // }
        $this->userService->save($user);
        return $this->redirectToRoute('login');
    }
@@ -67,6 +70,6 @@ class UserController extends Controller
      * @return Response
      */
     public function profile(){
-        return $this->render('user/profile.html.twig', array('user'=>$this->userService->currentUser()));
+        return $this->render('home/profile.html.twig', array('profile'=>$this->userService->currentUser()));
     }
 }

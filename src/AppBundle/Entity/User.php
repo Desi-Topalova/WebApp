@@ -76,12 +76,32 @@ class User implements UserInterface
      * )
      */
     private $image;
+    /**
+     * @var ArrayCollection|Solution[]
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solution", mappedBy="creator", cascade={"remove"})
+     */
+    private $solutions;
+
+    /**
+     * @var ArrayCollection|Message[]
+     * @ORM\OneToMany(targetEntity="SoftUniBlogBundle\Entity\Message", mappedBy="sender")
+     */
+    private $senders;
+
+    /**
+     * @var ArrayCollection|Message[]
+     * @ORM\OneToMany(targetEntity="SoftUniBlogBundle\Entity\Message", mappedBy="recipient")
+     */
+    private $recipients;
 
 
     public function __construct()
     {
         $this->problems=new ArrayCollection();
         $this->roles=new ArrayCollection();
+        $this->solutions=new ArrayCollection();
+
     }
 
 
@@ -169,7 +189,7 @@ class User implements UserInterface
 
 
     /**
-     * Returns the roles granted to the user.
+     * Returns the roles granted to the home.
      *
      *     public function getRoles()
      *     {
@@ -177,10 +197,10 @@ class User implements UserInterface
      *     }
      *
      * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
+     * and populated in any number of different ways when the home object
      * is created.
      *
-     * @return (Role|string)[] The user roles
+     * @return (Role|string)[] The home roles
      */
     public function getRoles()
     {
@@ -200,7 +220,7 @@ class User implements UserInterface
     }
 
     /**
-     * Removes sensitive data from the user.
+     * Removes sensitive data from the home.
      *
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
@@ -224,5 +244,47 @@ class User implements UserInterface
     public function setImage(File $file=null)
     {
         $this->image = $file;
+    }
+    /**
+     * @param Role $role
+     * @return User
+     */
+    public function addRole(Role $role)
+    {
+        $this->roles[] = $role;
+        return $this;
+    }
+
+    /**
+     * @param Problem $problem
+     * @return bool
+     */
+    public function isCreator(Problem $problem){
+        return $problem->getCreator()->getId()===$this->getId();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
+        return in_array("ROLE_ADMIN", $this->getRoles());
+    }
+
+    /**
+     * @return Solution[]|ArrayCollection
+     */
+    public function getSolutions()
+    {
+        return $this->solutions;
+    }
+
+    /**
+     * @param Solution $solutions
+     * @return User
+     */
+    public function setSolutions(Solution $solutions)
+    {
+        $this->solutions[] = $solutions;
+        return $this;
     }
 }

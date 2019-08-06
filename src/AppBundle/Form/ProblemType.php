@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -10,7 +11,8 @@ class ProblemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
+        $builder->add('about',TextType::class)
+                ->add('problem',TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -18,8 +20,5 @@ class ProblemType extends AbstractType
 
     }
 
-    public function getBlockPrefix()
-    {
-        return 'app_bundle_problem_type';
-    }
+
 }

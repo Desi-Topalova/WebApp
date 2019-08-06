@@ -41,30 +41,30 @@ class PsychologistPost
     private $summary;
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\",inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\",inversedBy="")
      */
-    private $author;
+    private $psychologist;
 
     /**
      * @return User
      */
-    public function getAuthor()
+    public function getPsychologist()
     {
-        return $this->author;
+        return $this->psychologist;
     }
 
     /**
-     * @param User $author
+     * @param User $psychologist
      */
-    public function setAuthor(User $author)
+    public function setPsychologist(User $psychologist)
     {
-        $this->author = $author;
+        $this->psychologist = $psychologist;
     }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -72,7 +72,7 @@ class PsychologistPost
     /**
      * @param int $id
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -80,7 +80,7 @@ class PsychologistPost
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -88,7 +88,7 @@ class PsychologistPost
     /**
      * @param string $title
      */
-    public function setTitle(string $title): void
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
@@ -96,7 +96,7 @@ class PsychologistPost
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
@@ -104,7 +104,7 @@ class PsychologistPost
     /**
      * @param string $content
      */
-    public function setContent(string $content): void
+    public function setContent(string $content)
     {
         $this->content = $content;
     }
@@ -120,7 +120,7 @@ class PsychologistPost
     /**
      * @param \DateTime $dateAdded
      */
-    public function setDateAdded(\DateTime $dateAdded): void
+    public function setDateAdded(\DateTime $dateAdded)
     {
         $this->dateAdded = $dateAdded;
     }
@@ -128,7 +128,7 @@ class PsychologistPost
     /**
      * @return string
      */
-    public function getSummary(): string
+    public function getSummary()
     {
         return $this->summary;
     }
@@ -136,7 +136,7 @@ class PsychologistPost
     /**
      * @param string $summary
      */
-    public function setSummary(string $summary): void
+    public function setSummary(string $summary)
     {
         $this->summary = $summary;
     }

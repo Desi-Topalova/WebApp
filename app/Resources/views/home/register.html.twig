@@ -5,6 +5,12 @@
     {% block main %}
         <div class="container body-content span=8 offset=2">
             <div class="well">
+               {# {% for msg in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger" id="info">
+                    {% msg %}
+                    {% endfor %}
+                </div>#}
+
                 <form class="form-horizontal" action="{{ path('register') }}" method="post">
                     <fieldset>
                         <legend>Регистрация</legend>
@@ -34,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-4">
-                                {#<a class="btn btn-user" href="{{ path('blog_index') }}">Cancel</a>#}
+                                {#<a class="btn btn-home" href="{{ path('blog_index') }}">Cancel</a>#}
                                 <button type="submit" class="btn btn-primary">Регистрация</button>
                             </div>
                         </div>

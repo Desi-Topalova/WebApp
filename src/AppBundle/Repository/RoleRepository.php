@@ -17,4 +17,5 @@ public function __construct(EntityManagerInterface $em, Mapping\ClassMetadata $m
     /** @var EntityManager $em */
     parent::__construct($em, $metadata==null?new Mapping\ClassMetadata(Role::class):$metadata===null);
 }
+
 }

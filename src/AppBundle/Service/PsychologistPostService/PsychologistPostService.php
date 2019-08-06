@@ -15,11 +15,19 @@ class PsychologistPostService implements PsychologistPostServiceInterface
         $this->psychologistPostRepository=$psychologistPostRepository;
     }
 
+    /**
+     * @param PsychologistPost $psychologistPost
+     * @return bool
+     */
     public function createPost(PsychologistPost $psychologistPost): bool
     {
         return $this->psychologistPostRepository->takePost($psychologistPost);
     }
 
+    /**
+     * @param PsychologistPost $psychologistPost
+     * @return bool
+     */
     public function editPost(PsychologistPost $psychologistPost): bool
     {
         return $this->psychologistPostRepository->changePost($psychologistPost);

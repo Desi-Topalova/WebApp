@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,7 +56,18 @@ class Problem
      * @var integer
      */
     private $viewCount;
+    /**
+     * @var ArrayCollection|Solution[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solution", mappedBy="problem")
+     *
+     */
+    private $comments;
 
+    public function __construct()
+    {
+        $this->dateAdded = new \DateTime('now');
+        $this->comments = new ArrayCollection();
+    }
     /**
      * Get id
      *

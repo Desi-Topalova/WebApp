@@ -2,11 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d9da835-afa0-4941-b0fa-e59d48d60401" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/register.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/security.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/security.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProblemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProblemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PsychologistPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PsychologistPostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Problem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Problem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/PsychologistPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/PsychologistPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Solution.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Solution.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProblemRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ProblemRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Form/ProblemType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Form/ProblemType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/RoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/RoleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/SolutionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/SolutionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/RoleService/RoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/RoleService/RoleService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionServiceInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/UserService/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/UserService/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/SymfonyRequirements.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/SymfonyRequirements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/web/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/bootstrap.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,16 +134,19 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/uploads/image" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\uploads\image" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\user" />
       <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\css" />
       <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\default" />
-      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\user" />
       <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\js" />
     </key>
   </component>
@@ -142,12 +171,7 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@fe858fe" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -169,7 +193,9 @@
       <workItem from="1564651999962" duration="4128000" />
       <workItem from="1564656159797" duration="1529000" />
       <workItem from="1564659551550" duration="9443000" />
-      <workItem from="1564845593891" duration="28111000" />
+      <workItem from="1564845593891" duration="28867000" />
+      <workItem from="1564982800057" duration="21983000" />
+      <workItem from="1565070512150" duration="22281000" />
     </task>
     <servers />
   </component>
