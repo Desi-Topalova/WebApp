@@ -40,4 +40,38 @@ class Role
         $this->users=new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     * @return Role
+     */
+    public function setRole(string $role)
+    {
+        $this->role = $role;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
 }

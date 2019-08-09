@@ -27,6 +27,19 @@ class User implements UserInterface
     private $id;
 
     /**
+     *@Assert\Length(
+     *      min = 2,
+     *      max = 20,
+     *      minMessage = "Потребителското име трябва да е минимум 2 символа",
+     *      maxMessage = "Потребителското име трябва да е максимум 20 символа"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern="/^[a-z0-9]+$/",
+     *     match=true,
+     *     message="Потребителското име трябва да съдържа малки букви и цифри!"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
@@ -34,6 +47,18 @@ class User implements UserInterface
     private $username;
 
     /**
+     *@Assert\Length(
+     *      min = 4,
+     *      max = 20,
+     *      minMessage = "Името трябва да е минимум 4 символа",
+     *      maxMessage = "Името трябва да е максимум 20 символа"
+     * )
+     * @Assert\Regex(
+     *     pattern="/^[A-Za-z]+$/",
+     *     match=true,
+     *     message="Името не трябва да съдържа цифри!"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -41,6 +66,19 @@ class User implements UserInterface
     private $name;
 
     /**
+     *
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 10,
+     *      minMessage = "Паролата трябва да е минимум 4 символа",
+     *      maxMessage = "Паролата трябва да е максимум 10 символа"
+     * )
+     * @Assert\Regex(
+     *     pattern="/^[0-9]+$/",
+     *     match=true,
+     *     message="Паролата може да съдържа само цифри!"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -61,39 +99,25 @@ class User implements UserInterface
      *     inverseJoinColumns={@ORM\JoinColumn(name="role_id",referencedColumnName="id")})
      */
         private $roles;
-    /**
-     * @var string
-     * @ORM\Column(name="image",type="string",length=255)
-     * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false
-     * )
-     */
-    private $image;
+
     /**
      * @var ArrayCollection|Solution[]
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solution", mappedBy="creator", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solution", mappedBy="creator")
      */
     private $solutions;
 
     /**
      * @var ArrayCollection|Message[]
-     * @ORM\OneToMany(targetEntity="SoftUniBlogBundle\Entity\Message", mappedBy="sender")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Message", mappedBy="sender")
      */
     private $senders;
 
     /**
      * @var ArrayCollection|Message[]
-     * @ORM\OneToMany(targetEntity="SoftUniBlogBundle\Entity\Message", mappedBy="recipient")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Message", mappedBy="receiver")
      */
-    private $recipients;
+    private $receiver;
 
 
     public function __construct()
@@ -101,6 +125,8 @@ class User implements UserInterface
         $this->problems=new ArrayCollection();
         $this->roles=new ArrayCollection();
         $this->solutions=new ArrayCollection();
+        $this->senders=new ArrayCollection();
+        $this->receiver=new ArrayCollection();
 
     }
 
@@ -204,7 +230,14 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return [];
+        $stringRoles = [];
+
+        foreach ($this->roles as $role){
+            /** @var Role $role */
+            $stringRoles[] = $role->getRole();
+        }
+
+        return $stringRoles;
     }
 
     /**
@@ -231,21 +264,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param File|null $file
-     */
-    public function setImage(File $file=null)
-    {
-        $this->image = $file;
-    }
-    /**
      * @param Role $role
      * @return User
      */
@@ -269,6 +287,9 @@ class User implements UserInterface
     public function isAdmin(){
         return in_array("ROLE_ADMIN", $this->getRoles());
     }
+    public function isPsychologist(){
+        return in_array("ROLE_PSYCHOLOGIST",$this->getRoles());
+    }
 
     /**
      * @return Solution[]|ArrayCollection
@@ -286,5 +307,37 @@ class User implements UserInterface
     {
         $this->solutions[] = $solutions;
         return $this;
+    }
+
+    /**
+     * @return Message[]|ArrayCollection
+     */
+    public function getSenders()
+    {
+        return $this->senders;
+    }
+
+    /**
+     * @param Message[]|ArrayCollection $senders
+     */
+    public function setSenders($senders): void
+    {
+        $this->senders = $senders;
+    }
+
+    /**
+     * @return ArrayCollection|Message[]
+     */
+    public function getSenderMessages()
+    {
+        return $this->senders;
+    }
+
+    /**
+     * @return ArrayCollection|Message[]
+     */
+    public function getReceiverMessages()
+    {
+        return $this->receiver;
     }
 }

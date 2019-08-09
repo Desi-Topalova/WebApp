@@ -23,6 +23,6 @@ public function __construct(RoleRepository $roleRepository)
      */
     public function findOneBy(string $criteria)
     {
-        return $this->roleRepository->findOneBy(['name' => $criteria]);
+        return $this->roleRepository->findOneBy(['role' => $criteria]);
     }
 }

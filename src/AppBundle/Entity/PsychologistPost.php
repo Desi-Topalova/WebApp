@@ -2,8 +2,13 @@
 
 
 namespace AppBundle\Entity;
-
-
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * PsychologistPost
+ *
+ * @ORM\Table(name="psychologist_post")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PsychologistPostRepository")
+ */
 class PsychologistPost
 {
     /**
@@ -39,27 +44,10 @@ class PsychologistPost
      * @var string
      */
     private $summary;
-    /**
-     * @var User
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\",inversedBy="")
-     */
-    private $psychologist;
 
-    /**
-     * @return User
-     */
-    public function getPsychologist()
-    {
-        return $this->psychologist;
-    }
 
-    /**
-     * @param User $psychologist
-     */
-    public function setPsychologist(User $psychologist)
-    {
-        $this->psychologist = $psychologist;
-    }
+
+
 
     /**
      * @return int

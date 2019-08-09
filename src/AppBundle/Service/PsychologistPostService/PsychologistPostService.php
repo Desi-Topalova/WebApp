@@ -6,6 +6,7 @@ namespace AppBundle\Service\PsychologistPostService;
 
 use AppBundle\Entity\PsychologistPost;
 use AppBundle\Repository\PsychologistPostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class PsychologistPostService implements PsychologistPostServiceInterface
 {
@@ -40,5 +41,13 @@ class PsychologistPostService implements PsychologistPostServiceInterface
     public function findPostByID(int $id): ?PsychologistPost
     {
         return $this->psychologistPostRepository->find($id);
+    }
+
+    /**
+     * @return ArrayCollection|array
+     */
+    public function findAllPosts(): ArrayCollection
+    {
+        return $this->psychologistPostRepository->findAll();
     }
 }

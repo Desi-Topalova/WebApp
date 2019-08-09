@@ -7,6 +7,7 @@ namespace AppBundle\Service\SolutionService;
 use AppBundle\Entity\Problem;
 use AppBundle\Entity\Solution;
 use AppBundle\Entity\User;
+use AppBundle\Repository\ProblemRepository;
 use AppBundle\Repository\SolutionRepository;
 use AppBundle\Service\ProblemService\ProblemServiceInterface;
 use AppBundle\Service\UserService\UserServiceInterface;
@@ -17,19 +18,25 @@ class SolutionService implements SolutionServiceInterface
     private $userService;
     private $problemService;
     private $solutionRepository;
-    public function __construct(UserServiceInterface $userService, ProblemServiceInterface $problemService,SolutionRepository $solutionRepository)
+    private $problemRepository;
+    public function __construct(UserServiceInterface $userService,
+                                ProblemServiceInterface $problemService,
+                                SolutionRepository $solutionRepository,
+                                ProblemRepository $problemRepository)
     {
         $this->userService=$userService;
         $this->problemService=$problemService;
         $this->solutionRepository=$solutionRepository;
+        $this->problemRepository=$problemRepository;
     }
 
-    public function addSolution(Solution $solution): bool
+    public function addSolution(Solution $solution, int $id): bool
     {
         /** @var Problem $solution */
         $solution->setCreator($this->userService->currentUser())
-                 ->setProblem($solution)
+                 ->setProblem($this->problemService->findOneProblemById($id))
                   ->setDateAdded();
+        return $this->solutionRepository->makeSolution($solution);
 
 
     }
@@ -44,12 +51,13 @@ class SolutionService implements SolutionServiceInterface
     }
 
     /**
-     * @param Problem $problem
+     * @param int $id
      * @return ArrayCollection|object|array
      */
-    public function findSolutionsByProblem(Problem $problem): ArrayCollection
+    public function findSolutionsByProblem(int $id): ArrayCollection
     {
-        return $this->solutionRepository->findBy(['solution'=>$problem]);
+        $problem=$this->problemService->findOneProblemById($id);
+        return $this->solutionRepository->findBy(['problem'=>$problem],['dateAdded'=>'DESC']);
     }
 
     /**

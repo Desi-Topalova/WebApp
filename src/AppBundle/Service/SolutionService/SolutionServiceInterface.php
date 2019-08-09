@@ -11,8 +11,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 interface SolutionServiceInterface
 {
-public function addSolution(Solution $solution):bool;
+public function addSolution(Solution $solution, int $id):bool;
 public function findSolutionsByUser(User $user): ArrayCollection;
-public function findSolutionsByProblem(Problem $problem):ArrayCollection;
+public function findSolutionsByProblem(int $id):ArrayCollection;
 public function deleteSolution(Solution $solution):bool;
 }

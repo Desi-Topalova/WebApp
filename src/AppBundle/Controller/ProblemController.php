@@ -115,21 +115,21 @@ class ProblemController extends Controller
     }
 
     /**
-     * @Route("/article/{id}",name="view")
+     * @Route("/problem/{id}",name="view_one")
      * @param int $id
      * @return Response
      */
     public function view(int $id){
         $problem=$this->problemService->findOneProblemById($id);
         if (null===$problem){
-            return $this->redirectToRoute("index");
+            return $this->redirectToRoute("profile");
         }
         $problem ->setViewCount($problem->getViewCount()+1);
         return $this->render("user/view.html.twig", array('problem'=>$problem));
     }
 
     /**
-     * @Route("/problems/my_problems",name="my_problems")
+     * @Route("/problems/view",name="view")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return Response
      */

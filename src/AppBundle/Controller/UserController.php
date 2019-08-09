@@ -4,9 +4,14 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
+use AppBundle\Service\MessageService\MessageServiceInterface;
 use AppBundle\Service\UserService\UserServiceInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,9 +23,11 @@ class UserController extends Controller
      * @var UserServiceInterface
      */
     private $userService;
-    public function __construct(UserServiceInterface $userService)
+    private $messageService;
+    public function __construct(UserServiceInterface $userService, MessageServiceInterface $messageService)
     {
         $this->userService=$userService;
+        $this->messageService=$messageService;
     }
     /**
      * @Route("/login",name="login")
@@ -48,6 +55,7 @@ class UserController extends Controller
        $user=new User();
        $form=$this->createForm(UserType::class,$user);
        $form->handleRequest($request);
+
        //if (null!==$this->userService->findOneByUsername($form['username'])->getData()->getUsername(){
           // $this->addFlash('error','Потрбителското име е заето.');
            //return $this->render('home/register.html.twig', ['user'=>$user,'form'=>$this->createForm(UserType::class)->createView()]);
@@ -70,6 +78,7 @@ class UserController extends Controller
      * @return Response
      */
     public function profile(){
-        return $this->render('home/profile.html.twig', array('profile'=>$this->userService->currentUser()));
+        return $this->render('home/profile.html.twig', array('profile'=>$this->userService->currentUser(),'message'=>$this->messageService->allUnRead()));
     }
+
 }

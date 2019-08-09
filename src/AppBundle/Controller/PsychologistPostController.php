@@ -70,15 +70,15 @@ class PsychologistPostController extends Controller
         $this->psychologistPost->editPost($psychologistPost);
         return $this->redirectToRoute('index');
     }
+
     /**
-     * @Route("/post/{id}",name="view")
-     * @param int $id
+     * @Route("/post",name="viewPost")
      * @return Response
      */
-    public function view(int $id){
-        $post=$this->psychologistPost->findPostByID($id);
+    public function view(){
+        $post=$this->psychologistPost->findAllPosts();
         if (null===$post){
-            return $this->redirectToRoute("index");
+            return $this->redirectToRoute("profile");
         }
        // $post ->setViewCount($post->getViewCount()+1);
         return $this->render("psychologist/viewPost.html.twig", array('post'=>$post));

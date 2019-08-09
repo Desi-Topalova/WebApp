@@ -202,5 +202,21 @@ class Problem
     {
         $this->viewCount = $viewCount;
     }
+
+    /**
+     * @return Solution[]|ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Solution[]|ArrayCollection $comments
+     */
+    public function setComments($comments): void
+    {
+        $this->comments = $comments;
+    }
 }
 

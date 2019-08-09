@@ -9,6 +9,7 @@ use AppBundle\Entity\User;
 use AppBundle\Repository\UserRepository;
 use AppBundle\Service\EncryptionService\BCryptService;
 use AppBundle\Service\RoleService\RoleServiceInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Security;
 
 class UserService implements UserServiceInterface
@@ -83,7 +84,7 @@ public function __construct(UserRepository $userRepository,BCryptService $encryp
         $user->setPassword($passwordHash);
         $userRole=$this->userRole->findOneBy("ROLE_USER");
         $user->addRole($userRole);
-        $user->setImage(null);
+
 
         return $this->userRepository->insert($user);
     }
