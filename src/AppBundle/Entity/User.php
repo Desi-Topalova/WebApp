@@ -91,42 +91,20 @@ class User implements UserInterface
      */
 
     private $problems;
+
+
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Role",)
-     * @ORM\JoinTable(name="users_roles",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="role_id",referencedColumnName="id")})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post",mappedBy="creator")
+     * @ORM\JoinColumn(name="creatorId",referencedColumnName="id")
      */
-        private $roles;
-
-    /**
-     * @var ArrayCollection|Solution[]
-     *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solution", mappedBy="creator")
-     */
-    private $solutions;
-
-    /**
-     * @var ArrayCollection|Message[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Message", mappedBy="sender")
-     */
-    private $senders;
-
-    /**
-     * @var ArrayCollection|Message[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Message", mappedBy="receiver")
-     */
-    private $receiver;
+    private $posts;
 
 
     public function __construct()
     {
         $this->problems=new ArrayCollection();
-        $this->roles=new ArrayCollection();
-        $this->solutions=new ArrayCollection();
-        $this->senders=new ArrayCollection();
-        $this->receiver=new ArrayCollection();
+        $this->posts=new ArrayCollection();
 
     }
 
@@ -230,14 +208,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        $stringRoles = [];
-
-        foreach ($this->roles as $role){
-            /** @var Role $role */
-            $stringRoles[] = $role->getRole();
-        }
-
-        return $stringRoles;
+        return[];
     }
 
     /**
@@ -263,15 +234,7 @@ class User implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
-    /**
-     * @param Role $role
-     * @return User
-     */
-    public function addRole(Role $role)
-    {
-        $this->roles[] = $role;
-        return $this;
-    }
+
 
     /**
      * @param Problem $problem
@@ -281,63 +244,21 @@ class User implements UserInterface
         return $problem->getCreator()->getId()===$this->getId();
     }
 
+
+
     /**
-     * @return bool
+     * @return ArrayCollection
      */
-    public function isAdmin(){
-        return in_array("ROLE_ADMIN", $this->getRoles());
-    }
-    public function isPsychologist(){
-        return in_array("ROLE_PSYCHOLOGIST",$this->getRoles());
+    public function getPosts(): ArrayCollection
+    {
+        return $this->posts;
     }
 
     /**
-     * @return Solution[]|ArrayCollection
+     * @param ArrayCollection $posts
      */
-    public function getSolutions()
+    public function setPosts(ArrayCollection $posts): void
     {
-        return $this->solutions;
-    }
-
-    /**
-     * @param Solution $solutions
-     * @return User
-     */
-    public function setSolutions(Solution $solutions)
-    {
-        $this->solutions[] = $solutions;
-        return $this;
-    }
-
-    /**
-     * @return Message[]|ArrayCollection
-     */
-    public function getSenders()
-    {
-        return $this->senders;
-    }
-
-    /**
-     * @param Message[]|ArrayCollection $senders
-     */
-    public function setSenders($senders): void
-    {
-        $this->senders = $senders;
-    }
-
-    /**
-     * @return ArrayCollection|Message[]
-     */
-    public function getSenderMessages()
-    {
-        return $this->senders;
-    }
-
-    /**
-     * @return ArrayCollection|Message[]
-     */
-    public function getReceiverMessages()
-    {
-        return $this->receiver;
+        $this->posts = $posts;
     }
 }

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Problem;
 use AppBundle\Entity\User;
 use AppBundle\Form\ProblemType;
+use AppBundle\Repository\ProblemRepository;
 use AppBundle\Service\ProblemService\ProblemServiceInterface;
 use AppBundle\Service\UserService\UserServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -23,18 +24,25 @@ class ProblemController extends Controller
      * @var UserServiceInterface
      */
     private $userService;
-    public function __construct(ProblemServiceInterface $problemService, UserServiceInterface $userService)
+
+    /**
+     * @var ProblemRepository
+     */
+    private $problemRepository;
+    public function __construct(ProblemServiceInterface $problemService,
+                                UserServiceInterface $userService, ProblemRepository $problemRepository)
     {
         $this->problemService=$problemService;
         $this->userService=$userService;
+        $this->problemRepository=$problemRepository;
     }
+
     /**
      * @Route("/create",name="create",methods={"GET"})
-     * @param Request $request
      * @return Response
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
-    public function create(Request $request)
+    public function create()
     {
         return $this->render('user/create.html.twig', array('form' => $this->createForm(ProblemType::class)->createView()));
     }
@@ -49,12 +57,12 @@ class ProblemController extends Controller
         $form=$this->createForm(ProblemType::class,$problem);
         $form->handleRequest($request);
         $this->problemService->createProblem($problem);
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('view');
 
     }
 
     /**
-     * @Route("/edit",name="edit", methods={"GET"})
+     * @Route("/edit/{id}",name="edit", methods={"GET"})
      * @param int $id
      * @return Response
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
@@ -62,14 +70,14 @@ class ProblemController extends Controller
     public function edit(int $id){
         $problem=$this->problemService->findOneProblemById($id);
         if (null===$problem){
-            return $this->redirectToRoute("index");
+            return $this->redirectToRoute("profile");
         }
-        return $this->render('user/edit.html.twig', array('problem'=>$problem,
+        return $this->render('user/edit.html.twig', array('problem'=>$problem,'id'=>$id,
             'form'=>$this->createForm(ProblemType::class)->createView()));
     }
 
     /**
-     * @Route("/edit", methods={"POST"})
+     * @Route("/edit/{id}", methods={"POST"})
      * @param Request $request
      * @param int $id
      * @return Response
@@ -80,11 +88,31 @@ class ProblemController extends Controller
         $form=$this->createForm(ProblemType::class,$problem);
         $form->handleRequest($request);
         $this->problemService->editProblem($problem);
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('myProblems');
+    }
+
+
+    /**
+     * @Route("/problem/view",name="view")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @return Response
+     */
+    public function getAllProblemsByUser(){
+       $problem= $this->problemService->findAllProblems();
+        return $this->render('',array('problem'=>$problem));
     }
 
     /**
-     * @Route("/delete",name="delete",methods={"GET"})
+     * @Route("/myProblems", name="myProblems")
+     * @return Response
+     */
+    public function myProblems(){
+        $problems = $this->problemRepository->findBy(['creator' => $this->getUser()]);
+        return $this->render("user/myProblems.html.twig",
+            ['problems' => $problems]);
+    }
+    /**
+     * @Route("admin/delete/{id}",name="delete",methods={"GET"})
      *@Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param int $id
      * @return Response
@@ -92,14 +120,14 @@ class ProblemController extends Controller
     public function delete(int $id){
         $problem=$this->problemService->findOneProblemById($id);
         if (null===$problem){
-            return $this->redirectToRoute("index");
+            return $this->redirectToRoute("");
         }
         return $this->render('user/delete.html.twig', array('problem'=>$problem,
             'form'=>$this->createForm(ProblemType::class)->createView()));
     }
 
     /**
-     * @Route("/delete",methods={"POST"})
+     * @Route("admin/delete/{id}",methods={"POST"})
      * @param Request $request
      * @param int $id
      * @return Response
@@ -111,46 +139,10 @@ class ProblemController extends Controller
         $form->handleRequest($request);
         $this->problemService->deleteProblem($problem);
 
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('myProblems');
     }
 
-    /**
-     * @Route("/problem/{id}",name="view_one")
-     * @param int $id
-     * @return Response
-     */
-    public function view(int $id){
-        $problem=$this->problemService->findOneProblemById($id);
-        if (null===$problem){
-            return $this->redirectToRoute("profile");
-        }
-        $problem ->setViewCount($problem->getViewCount()+1);
-        return $this->render("user/view.html.twig", array('problem'=>$problem));
-    }
 
-    /**
-     * @Route("/problems/view",name="view")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return Response
-     */
-    public function getAllProblemsByUser(){
-       $problem= $this->problemService->findAllProblems();
-        return $this->render('user/myProblems.html.twig',array('problems'=>$problem));
-    }
 
-    /**
-     * @param Problem $problem
-     * @return bool
-     */
-    private function isCreatorOrAdmin(Problem $problem){
-        /**
-         * @var User $currentUser
-         */
-        $currentUser=$this->getUser();
-        /** @var Problem $problem */
-        if (!$currentUser->isCreator($problem)&& !$currentUser->isAdmin()){
-            return false;
-        }
-        return true;
-    }
+
 }

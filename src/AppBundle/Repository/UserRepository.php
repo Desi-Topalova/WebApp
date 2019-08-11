@@ -20,8 +20,9 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     {
 
         /** @var EntityManager $em */
-        parent::__construct($em, $metadata==null?new Mapping\ClassMetadata(User::class):$metadata===null);
+        parent::__construct($em, $metadata==null?new Mapping\ClassMetadata(User::class):$metadata);
     }
+
     public function insert(User $user){
         try {
             $this->_em->persist($user);
@@ -31,8 +32,8 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
-    public function changeUserProfile(User $user){
 
+    public function changeUserProfile(User $user){
         try {
             $this->_em->merge($user);
             $this->_em->flush();

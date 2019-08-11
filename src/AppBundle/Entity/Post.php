@@ -4,12 +4,12 @@
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 /**
- * PsychologistPost
+ * Post
  *
- * @ORM\Table(name="psychologist_post")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PsychologistPostRepository")
+ * @ORM\Table(name="posts")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
-class PsychologistPost
+class Post
 {
     /**
      * @var int
@@ -43,10 +43,22 @@ class PsychologistPost
     /**
      * @var string
      */
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="posts")
+     */
+    private $creator;
+    /**
+     * @ORM\Column(name="view_count", type="integer")
+     * @var integer
+     */
+    private $viewCount;
     private $summary;
 
-
-
+public function __construct()
+{
+    $this->dateAdded = new \DateTime('now');
+}
 
 
     /**
@@ -127,6 +139,38 @@ class PsychologistPost
     public function setSummary(string $summary)
     {
         $this->summary = $summary;
+    }
+
+    /**
+     * @return User
+     */
+    public function getCreator(): User
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param User $creator
+     */
+    public function setCreator(User $creator): void
+    {
+        $this->creator = $creator;
+    }
+
+    /**
+     * @return int
+     */
+    public function getViewCount(): int
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * @param int $viewCount
+     */
+    public function setViewCount(int $viewCount): void
+    {
+        $this->viewCount = $viewCount;
     }
 
 }

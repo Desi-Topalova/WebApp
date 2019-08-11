@@ -2,21 +2,21 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\PsychologistPost;
-use AppBundle\Form\PsychologistPostType;
-use AppBundle\Service\PsychologistPostService\PsychologistPostServiceInterface;
+use AppBundle\Entity\Post;
+use AppBundle\Form\PostType;
+use AppBundle\Service\PostService\PostServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PsychologistPostController extends Controller
+class PostController extends Controller
 {
-   private $psychologistPost;
-   public function __construct(PsychologistPostServiceInterface $psychologistPost)
+   private $post;
+   public function __construct(PostServiceInterface $post)
    {
-       $this->psychologistPost=$psychologistPost;
+       $this->post=$post;
    }
     /**
      * @Route("/create_post",name="create_post",methods={"GET"})
@@ -26,7 +26,7 @@ class PsychologistPostController extends Controller
      */
     public function createPost(Request $request)
     {
-        return $this->render('psychologist/create_post.html.twig', array('form' => $this->createForm(PsychologistPostType::class)->createView()));
+        return $this->render('post/create_post.html.twig', array('form' => $this->createForm(PostType::class)->createView()));
     }
     /**
      * @Route("/create_post",methods={"POST"})
@@ -35,11 +35,11 @@ class PsychologistPostController extends Controller
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function createPostProcess(Request $request){
-        $psychologistPost=new PsychologistPost();
-        $form=$this->createForm(PsychologistPostType::class,$psychologistPost);
+        $post=new Post();
+        $form=$this->createForm(PostType::class,$post);
         $form->handleRequest($request);
-        $this->psychologistPost->createPost($psychologistPost);
-        return $this->redirectToRoute('index');
+        $this->post->createPost($post);
+        return $this->redirectToRoute('viewPost');
 
     }
     /**
@@ -49,26 +49,26 @@ class PsychologistPostController extends Controller
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function editPost(int $id){
-        $psychologistPost=$this;
-        if (null===$psychologistPost){
+        $post=$this;
+        if (null===$post){
             return $this->redirectToRoute("index");
         }
-        return $this->render('psychologist/edit_post.html.twig', array('psychologistPost'=>$psychologistPost,
-            'form'=>$this->createForm(PsychologistPostType::class)->createView()));
+        return $this->render('post/edit_post.html.twig', array('post'=>$post,
+            'form'=>$this->createForm(PostType::class)->createView()));
     }
     /**
-     * @Route("/edit", methods={"POST"})
+     * @Route("/edit_post", methods={"POST"})
      * @param Request $request
      * @param int $id
      * @return Response
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function editPostProcess(Request $request, int $id){
-        $psychologistPost=$this->psychologistPost->findPostByID($id);
-        $form=$this->createForm(PsychologistPostType::class,$psychologistPost);
+        $post=$this->post->findPostByID($id);
+        $form=$this->createForm(PostType::class,$post);
         $form->handleRequest($request);
-        $this->psychologistPost->editPost($psychologistPost);
-        return $this->redirectToRoute('index');
+        $this->post->editPost($post);
+        return $this->redirectToRoute('viewPost');
     }
 
     /**
@@ -76,12 +76,12 @@ class PsychologistPostController extends Controller
      * @return Response
      */
     public function view(){
-        $post=$this->psychologistPost->findAllPosts();
+        $post=$this->post->findAllPosts();
         if (null===$post){
             return $this->redirectToRoute("profile");
         }
-       // $post ->setViewCount($post->getViewCount()+1);
-        return $this->render("psychologist/viewPost.html.twig", array('post'=>$post));
+       // $post ->setdateAdded($post->getViewCount()+1);
+        return $this->render("post/viewPost.html.twig", array('post'=>$post));
     }
 
 }

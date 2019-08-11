@@ -56,17 +56,11 @@ class Problem
      * @var integer
      */
     private $viewCount;
-    /**
-     * @var ArrayCollection|Solution[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solution", mappedBy="problem")
-     *
-     */
-    private $comments;
+
 
     public function __construct()
     {
         $this->dateAdded = new \DateTime('now');
-        $this->comments = new ArrayCollection();
     }
     /**
      * Get id
@@ -203,20 +197,5 @@ class Problem
         $this->viewCount = $viewCount;
     }
 
-    /**
-     * @return Solution[]|ArrayCollection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param Solution[]|ArrayCollection $comments
-     */
-    public function setComments($comments): void
-    {
-        $this->comments = $comments;
-    }
 }
 

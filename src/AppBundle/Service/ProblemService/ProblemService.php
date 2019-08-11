@@ -47,7 +47,7 @@ public function __construct(ProblemRepository $problemRepository, UserServiceInt
     /**
      * @return Problem|null|array
      */
-    public function findAllProblems(): ?Problem
+    public function findAllProblems()
     {
         return $this->problemRepository->findBy([],["dateAdded"=>'DESC']);
     }

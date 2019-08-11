@@ -23,11 +23,10 @@ class UserController extends Controller
      * @var UserServiceInterface
      */
     private $userService;
-    private $messageService;
-    public function __construct(UserServiceInterface $userService, MessageServiceInterface $messageService)
+
+    public function __construct(UserServiceInterface $userService)
     {
         $this->userService=$userService;
-        $this->messageService=$messageService;
     }
     /**
      * @Route("/login",name="login")
@@ -78,7 +77,9 @@ class UserController extends Controller
      * @return Response
      */
     public function profile(){
-        return $this->render('home/profile.html.twig', array('profile'=>$this->userService->currentUser(),'message'=>$this->messageService->allUnRead()));
+
+        $currentUser = $this->getUser();
+        return $this->render('home/profile.html.twig', array('user' => $currentUser, 'profile'=>$this->userService->currentUser(),'message'=>$this->messageService->allUnRead()));
     }
 
 }

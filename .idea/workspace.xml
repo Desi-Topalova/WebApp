@@ -2,31 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d9da835-afa0-4941-b0fa-e59d48d60401" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/AppBundle/Controller/SortController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppBundle/Service/PostService/PostServiceInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/home/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/home/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/home/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/home/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/security.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/security.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ProblemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ProblemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PsychologistPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PsychologistPostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PsychologistPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Problem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Problem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/PsychologistPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/PsychologistPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/PsychologistPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Solution.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Form/PsychologistPostType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Form/PostType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ProblemRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ProblemRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/PsychologistPostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/PostRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/RoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/RoleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostServiceInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/RoleService/RoleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/RoleService/RoleService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionServiceInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/UserService/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/UserService/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/_bootswatch.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/SolutionRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/ProblemService/ProblemService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/ProblemService/ProblemService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/ProblemService/ProblemServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/ProblemService/ProblemServiceInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Service/PostService/PostService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/PsychologistPostService/PsychologistPostServiceInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/RoleService/RoleService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/RoleService/RoleServiceInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Service/SolutionService/SolutionServiceInterface.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,15 +75,15 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="web_app: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="web_app@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="web_app: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="users: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
     </expand>
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -126,23 +134,24 @@
   <component name="ProjectId" id="1OjZgyUG8fesbWCuARzobiZdNgF" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/uploads/image" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SoftUniBlog/SoftUniBlog" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\uploads\image" />
-      <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\uploads" />
-      <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\css" />
-      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\user" />
-      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\default" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\uploads\image" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\user" />
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\admin" />
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\app\Resources\views\user\mailbox" />
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\uploads\image" />
+      <recent name="C:\xampp\htdocs\ExamProject\WebApp\web\uploads" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -192,7 +201,9 @@
       <workItem from="1564982800057" duration="21983000" />
       <workItem from="1565070512150" duration="24631000" />
       <workItem from="1565165546118" duration="36238000" />
-      <workItem from="1565333277035" duration="24741000" />
+      <workItem from="1565333277035" duration="25310000" />
+      <workItem from="1565371523270" duration="349000" />
+      <workItem from="1565410365385" duration="53634000" />
     </task>
     <servers />
   </component>
@@ -211,5 +222,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Resources/views/home/index.html.twig</url>
+          <line>9</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
